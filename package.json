@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts" : {
+  "start" : "node app.js"
+  },
   "dependencies": {
     "dotenv": "^8.0.0",
     "mongoose": "^5.5.11",
