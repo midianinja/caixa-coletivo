@@ -10,7 +10,15 @@ db();
 const token = process.env.TELEGRAM_TOKEN;
  
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+
+var port = process.env.PORT || 443,
+    host = '0.0.0.0',  // probably this change is not required
+    externalUrl = process.env.CUSTOM_ENV_VARIABLE || 'https://caixa-coletivo.herokuapp.com/',
+    bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { webHook: { port : port, host : host } });
+bot.setWebHook(externalUrl + ':443/bot' + token);
+
+
+
 
 bot.onText(/\/saldo (.+)/, (msg, match) => Controller.GetOneBalance(msg, match, bot));
 bot.onText(/\/entrada (.+)/, (msg, match) => Controller.CreditTransaction(msg, match, bot));
