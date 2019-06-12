@@ -92,7 +92,7 @@ const DebitTransaction = (msg, match, bot) => {
             { tid: msg.from.id },
             { $inc: { balance: -value } }
         ).then(resp => {
-            bot.sendMessage(chatId, 'resgistrado');
+            bot.sendMessage(chatId, 'registrado');
         }).catch(e => bot.sendMessage(chatId, e));
     }).catch( e => {
         console.log(e)

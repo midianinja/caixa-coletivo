@@ -18,9 +18,7 @@ var port = process.env.PORT || 443,
 bot.setWebHook(externalUrl + ':443/bot' + token);
 
 
-
-
-bot.onText(/\/saldo (.+)/, (msg, match) => Controller.GetOneBalance(msg, match, bot));
+bot.onText(/\@saldo (.+)/, (msg, match) => Controller.GetOneBalance(msg, match, bot));
 bot.onText(/\/entrada (.+)/, (msg, match) => Controller.CreditTransaction(msg, match, bot));
 bot.onText(/\/saida (.+)/, (msg, match) => Controller.DebitTransaction(msg, match, bot));
 bot.onText(/\/criar (.+)/, (msg, match) => Controller.CreateUser(msg, match, bot));
